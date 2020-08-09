@@ -1,0 +1,123 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+
+{% load static %}
+{% block content%}
+
+<!-- Hero Section Begin -->
+    <section class="hero set-bg" data-setbg="{% static 'Home/img/BookShelf.jpg' %}">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="hero__text" >
+                    <div class="section-title">
+                        <h5> Need Books? Or Want To Sell Book?</h5>
+                        <h2>No Worry,We Are here </h2>
+                       <h2> For Your Service </h2> 
+                       </div>
+                        <a href="/Bcategory" class="primary-btn">Buy Books</a>
+                        <a href="/Scategory" class="primary-btn second-bg">SeLL Books</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Hero Section End -->
+
+
+
+
+
+<!-- Feature Section Begin -->
+    <section class="feature spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-4">
+                    <div class="feature__text">
+                        <div class="section-title">
+                            <span>Why Use Our Services?</span>
+                            <h2>Our Feature</h2>
+                        </div>
+                        <p>We Are providing  you Direct Contacts Of The Students who Want to sell their Books </p>
+                        {% if user.is_authenticated %}
+                        <a href="/Bcategory" class="primary-btn ">Let's Buy</a>
+                        {% else %}
+                        <a href="login" class="primary-btn">Let's Buy</a>
+                        {% endif %}
+
+
+                    </div>
+                </div>
+                <div class="col-lg-8 col-md-8">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                            <div class="feature__item">
+                                <img src="{% static 'Home/img/UsedLogo.png' %}" alt="">
+                                <h5>Buy Second hand Books And Save Money</h5>
+                            </div>
+                            <div class="feature__item">
+                                <img src="{% static 'Home/img/SellLogo.png' %}" alt="">
+                                <h5>Get Rid of Old Books</h5>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                            <div class="feature__item right-column">
+                                <img src="{% static 'Home/img/NewbookLogo.png' %}" alt="">
+                                <h5>Both New And Old Books Will Be available</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Feature Section End -->
+
+
+
+    <!-- Pricing Section Begin -->
+    <section class="pricing spad set-bg" data-setbg="{% static 'Home/img/blackbg.jpg' %}">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title center-title">
+                        <span>Get Special Offer</span>
+                        <h2>Our Pricing</h2>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+            {% for pr in price %}
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="pricing__item">
+                        <div class="pricing__item__title">
+                            <span>{{pr.off}} %off</span>
+                            <h2>{{pr.price}} Rs/-<h2>
+                            <h5>{{pr.field}}</h5>
+                        </div>0
+                        <ul>
+                            <li>{{pr.sub1}}</li>
+                            <li>{{pr.sub2}}</li>
+                            <li>{{pr.sub3}}</li>
+                            <li>{{pr.sub4}}</li>
+                            <li>{{pr.sub5}}</li>
+                        </ul>
+                        <a href="" class="primary-btn">Buy Now</a>
+                    </div>
+                </div>   
+                {% endfor %}
+            </div>
+            
+        </div>
+    </section>
+    <!-- Pricing Section End -->
+
+
+
+
+
+
+
+
+{% endblock %}

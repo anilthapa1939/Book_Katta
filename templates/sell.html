@@ -1,0 +1,27 @@
+{% extends 'base.html'%}
+{% block title %}Product Details{% endblock %}
+{% load static %}
+{% block content %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+  <style>
+center  {
+  text-align: center;
+}
+</style>
+  </head>
+
+  <body>
+<br/><br/><br/><br/><br/><br/>
+<center>
+  <a  class="primary-btn">Add Details of Product To add</a><br/><br/>
+<form method='POST' enctype='multipart/form-data'>
+{% csrf_token %}
+{{form.as_p}}
+<button>Add</button>
+</center>
+  </body>
+  </html>
+  {% endblock %}

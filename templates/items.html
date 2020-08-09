@@ -1,0 +1,119 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en>
+<head><style>
+center  {
+  text-align: center;
+}
+</style>
+{% block title %}Engineering Products{% endblock %}
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="Little Closet template">
+<meta name="author" content="Colorlib">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="{% static 'items/styles/bootstrap-4.1.2/bootstrap.min.css' %}">
+<link href="{% static 'items/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'items/plugins/OwlCarousel2-2.2.1/owl.carousel.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'items/plugins/OwlCarousel2-2.2.1/owl.theme.default.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'items/plugins/OwlCarousel2-2.2.1/animate.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'items/styles/main_styles.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'items/styles/responsive.css' %}">
+
+<!-- Google Font -->
+    <link href="{% static 'https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap' %}" rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="{% static 'Home/css/bootstrap.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'Home/css/font-awesome.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'Home/css/nice-select.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'Home/css/magnific-popup.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'Home/css/jquery-ui.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'Home/css/owl.carousel.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'Home/css/slicknav.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'Home/css/style.css' %}" type="text/css">
+
+</head>
+<body>
+<br/>
+	<!-- Products -->
+		<div class="products ">
+			<div class="container">
+				<div class="row page_nav_row">
+					<div class="col">
+						<div class="page_nav">
+							<ul class="d-flex flex-row align-items-start justify-content-center">
+								<li class="active"><a>Engineering Department</a></li>
+							</ul>
+						</div>
+					</div><br/><br/><br/>
+					
+				</div>
+				<div class="row products_row">
+					
+					<!-- Product -->
+					{% for i in Item %}
+					<div class="col-xl-4 col-md-6">
+					<hr>
+						<div class="product">
+							<div class="product_image"><img src="{{ i.img.url}}" alt=""></div>
+							<div class="product_content">
+								<div class="product_info d-flex flex-row align-items-start justify-content-start">
+									<div>
+										<div>
+											<div class="product_name"><a href="product.html">{{i.name}}</a></div>
+										</div>
+										<div>
+											<div class="product_desc">{{i.desc}}</div>
+										</div>
+									</div>
+									<div class="ml-auto text-right">
+										<div class="product_price text-right">{{i.price}} Rs/-</div>
+									</div>
+								</div>
+								<div class="product_buttons">
+									<div class="text-right d-flex flex-row align-items-start justify-content-start">
+										<div class="product_button product_fav text-center d-flex flex-column align-items-center justify-content-center">
+										<a>Contact Now</a>
+										</div>
+										<div class="product_button product_cart text-center d-flex flex-column align-items-center justify-content-center">
+										<a>Confirm Purchase</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					{% endfor %}
+
+					
+
+				</div>
+				<div class="row load_more_row">
+					<div class="col">
+						<div class="button load_more ml-auto mr-auto"><a href="/items">load more</a></div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+    
+<script src="{% static 'items/js/jquery-3.2.1.min.js' %}"></script>
+<script src="{% static 'items/styles/bootstrap-4.1.2/popper.js' %}"></script>
+<script src="{% static 'items/styles/bootstrap-4.1.2/bootstrap.min.js' %}"></script>
+<script src="{% static 'items/plugins/greensock/TweenMax.min.js' %}"></script>
+<script src="{% static 'items/plugins/greensock/TimelineMax.min.js' %}"></script>
+<script src="{% static 'items/plugins/scrollmagic/ScrollMagic.min.js' %}"></script>
+<script src="{% static 'items/plugins/greensock/animation.gsap.min.js' %}"></script>
+<script src="{% static 'items/plugins/greensock/ScrollToPlugin.min.js' %}"></script>
+<script src="{% static 'items/plugins/OwlCarousel2-2.2.1/owl.carousel.js' %}"></script>
+<script src="{% static 'items/plugins/easing/easing.js' %}"></script>
+<script src="{% static 'items/plugins/progressbar/progressbar.min.js"></script>
+<script src="{% static 'items/plugins/parallax-js-master/parallax.min.js' %}"></script>
+<script src="{% static 'items/js/custom.js' %}"></script>
+</body>
+</html>
+{% endblock %}
