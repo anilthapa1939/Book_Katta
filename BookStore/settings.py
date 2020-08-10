@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+import django_heroku
+import dj_database_url
 from decouple import config
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -25,7 +27,7 @@ SECRET_KEY =config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG',cast=bool)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', '.herokuapp.com']
 
 
 # Application definition
@@ -48,6 +50,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middelware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'BookStore.urls'
@@ -76,7 +79,7 @@ WSGI_APPLICATION = 'BookStore.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': config('dbname'),
         'USER': config('dbuser'),
         'PASSWORD': config('dbpass'),
@@ -84,6 +87,8 @@ DATABASES = {
     }
 }
 
+db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(db_from_env)
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -125,6 +130,8 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS =[
     os.path.join(BASE_DIR,'static'),
 ]
+
+STSTAICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 MEDIA_URL ='/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 
@@ -140,3 +147,8 @@ EMAIL_HOST_USER ='anilthapa1939@gmail.com'
 EMAIL_HOST_PASSWORD =config('EMAIL_HOST_PASSWORD')
 EMAIL_PORT = 587
 EMAIL_USE_TLS =True
+
+
+
+
+django_heroku.settings(locals())
