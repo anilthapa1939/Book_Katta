@@ -8,3 +8,5 @@ pytz==2020.1
 requests==2.24.0
 sqlparse==0.3.1
 whitenoise==5.2.0
+python-decouple==3.3
+
