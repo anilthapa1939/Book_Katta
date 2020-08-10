@@ -16,6 +16,7 @@ class Items(models.Model):
     name =models.CharField(max_length=100)
     desc =models.TextField()
     price =models.IntegerField()
+    mobile =models.CharField(max_length=100,null=True)
 
 
     def get_absolute_url(self):
@@ -27,6 +28,7 @@ class Ditems(models.Model):
     name =models.CharField(max_length=100)
     desc =models.TextField()
     price =models.IntegerField()
+    mobile =models.CharField(max_length=100,null=True)
 
 
     def get_absolute_url(self):
@@ -37,6 +39,7 @@ class AgriItems(models.Model):
     name =models.CharField(max_length=100)
     desc =models.TextField()
     price =models.IntegerField()
+    mobile =models.CharField(max_length=100,null=True)
 
 
     def get_absolute_url(self):
@@ -48,6 +51,7 @@ class ArchItems(models.Model):
     name =models.CharField(max_length=100)
     desc =models.TextField()
     price =models.IntegerField()
+    mobile =models.CharField(max_length=100,null=True)
 
 
     def get_absolute_url(self):
