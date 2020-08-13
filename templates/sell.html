@@ -1,4 +1,4 @@
-{% extends 'base.html'%}
+{% extends 'base.html' %}
 {% block title %}Product Details{% endblock %}
 {% load static %}
 {% block content %}
@@ -21,6 +21,8 @@ center  {
 {% csrf_token %}
 {{form.as_p}}
 <button>Add</button>
+</form>
+
 </center>
   </body>
   </html>

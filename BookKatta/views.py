@@ -13,6 +13,13 @@ def Home(request):
 
     return render(request,'Home.html',{'price':price})
 
+
+def faq(request):
+    return render(request,'faq.html')
+
+def privacy(request):
+    return render(request,'privacy.html')
+
 def logout(request):
     auth.logout(request)
     return redirect('/')
@@ -27,7 +34,7 @@ def login(request):
 
         if user is not None:
             auth.login(request,user)
-            return redirect('/Bcategory')
+            return redirect('/')
 
         else:
 
@@ -35,7 +42,7 @@ def login(request):
             return redirect('/login')
 
     else :
-        return render(request,'login.html')
+        return render(request,'Login.html')
 
 
 def signup(request):
@@ -79,7 +86,7 @@ def items(request):
 def ditems(request):
     item =Ditems.objects.all()
 
-    return render(request,'Ditems.html',{'Item' : item,'value': True})
+    return render(request,'Ditems.html',{'Item' : item,})
 
 
 def agriItems(request):
@@ -91,7 +98,7 @@ def Selling(request):
     return render(request,'Selling.html')
 
 def Dselling(request):
-    return render(request,'Dselling.html')
+    return render(request,'dselling.html')
 
 def AgriSelling(request):
     return render(request,'AgriSelling.html')

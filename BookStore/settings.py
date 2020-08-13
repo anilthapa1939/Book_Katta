@@ -9,7 +9,6 @@ https://docs.djangoproject.com/en/3.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.0/ref/settings/
 """
-
 import os
 import dj_database_url
 import django_heroku
@@ -23,9 +22,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY =config('SECRET_KEY')
+SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUG',cast=bool)
+DEBUG = config('DEBUG')
 
 ALLOWED_HOSTS = []
 
@@ -40,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'BookKatta.apps.BookkattaConfig',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -76,15 +76,13 @@ WSGI_APPLICATION = 'BookStore.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
-
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': config('dbname'),
         'USER': config('dbuser'),
         'PASSWORD': config('dbpass'),
-        'HOST' : config('dbhost'),
+        'HOST' :config('dbhost'),
         'CONN_MAX_AGE': 500,
     }
 }
@@ -124,22 +122,19 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 STATICFILES_DIRS =[
     os.path.join(BASE_DIR,'static'),
 ]
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 
 MEDIA_URL ='/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 
 
-
-#EMAIL_BACKEND ='sgbackend.SendGridBackend'
-#SENDGRID_API_KEY =''
-#SENDGRID_SENDBOX_MODE_IN_DEBUG =False
 
 EMAIL_BACKEND ='django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST ='smtp.gmail.com'
@@ -149,5 +144,16 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS =True
 
 
+
+
+
+
+AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME =config('AWS_STORAGE_BUCKET_NAME')
+
+AWS_S3_FILE_OVERWRITE = config('AWS_S3_FILE_OVERWRITE')
+AWS_DEFAULT_ACL = config('AWS_DEFAULT_ACL')
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 django_heroku.settings(locals())

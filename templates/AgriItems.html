@@ -58,12 +58,13 @@ center  {
 				</div>
 				<div class="row products_row">
 					
-					<!-- Product -->
+							{% if Item %}
+						<!-- Product -->
 					{% for i in Item %}
 					<div class="col-xl-4 col-md-6">
 					<hr>
 						<div class="product">
-							<div class="product_image"><img src="{{ i.img.url}}" alt=""></div>
+							<div class="product_image"><img src="{{i.img.url}}" alt="" width ="450" height ="450"></div>
 							<div class="product_content">
 								<div class="product_info d-flex flex-row align-items-start justify-content-start">
 									<div>
@@ -80,12 +81,16 @@ center  {
 								</div>
 								<hr>
 								<div class="product_buttons">
-								<center>{{i.mobile}}</center>
+								<center><p class="w3-xxlarge">Mob : {{i.mobile}}</p></h4></center>
+							
 								</div>
 							</div>
 						</div>
 					</div>
 					{% endfor %}
+				{% else %}
+					<center><h1>Sorry But No products Availale currently</h1></center>
+				{% endif %}
 
 					
 

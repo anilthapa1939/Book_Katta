@@ -20,9 +20,11 @@ urlpatterns = [
     path('Bcategory',views.Bcategory,name='Bcategory'),
     path('Scategory',views.Scategory,name='Scategory'),
     path('Selling',views.Selling,name='Selling'),
-    path('Dselling',views.Dselling,name='Dselling'),
+    path('dselling',views.Dselling,name='dselling'),
     path('AgriSelling',views.AgriSelling,name='AgriSelling'),
     path('ArchSelling',views.ArchSelling,name='ArchSelling'),
+    path('faq',views.faq,name='faq'),
+    path('privacy',views.privacy,name='privacy'),
     
 
 
